@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# React Dashboard with TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React-based Admin Dashboard application built with TypeScript. It includes user authentication (mocked), a protected route with a data table, and a login page. The project demonstrates features like routing, state management, form handling, and the use of Material UI for a clean interface.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Authentication**: Mock login with hardcoded credentials.
+- **Protected Routes**: Only authenticated users can access certain pages (e.g., the data table).
+- **Data Table**: Displays data in a table format with sorting, filtering, and pagination.
+- **Logout Functionality**: Clears authentication and redirects to login.
+- **State Management**: Local state is managed via React hooks.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **React**: Frontend library for building user interfaces.
+- **TypeScript**: JavaScript with static types.
+- **React Router**: For routing between pages.
+- **Material UI**: For styling and UI components.
+- **Axios**: For handling HTTP requests (optional for real API integration).
+- **Recharts**: For adding charts (future extension).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Node.js**: Ensure that Node.js and npm are installed on your machine. You can download them here.
+- **npm**: Comes with Node.js, but make sure it's updated to the latest version.
 
-### `npm run build`
+### Steps
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/react-dashboard-ts.git
+    cd react-dashboard-ts
+    ```
+2. Run the following command to install all necessary dependencies:
+    ```bash
+    npm install
+    ```
+3. Start the development server:
+    ```bash
+    npm start
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application will automatically open in your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Usage
+1. **Logging In**
+    The login page is available at /login. Use the following credentials to log in:
 
-### `npm run eject`
+    ````
+    Email: test@test.com
+    Password: password123
+    ````
+    
+    After logging in, you'll be redirected to the data table view at /datatable.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. **Accessing the Data Table**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    Once logged in, you can view the data table. The table allows:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    - **Pagination**: You can navigate through pages of data.
+    - **Filtering**: A text input allows you to filter the rows by name.
+    - **Sorting**: Columns are sortable by clicking on the header.
+3. **Logout**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    To log out, use the logout button (you can implement it in the DataTable or another component). This will clear the session and redirect back to the login page.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
+This project is licensed under the MIT License.
