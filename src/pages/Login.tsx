@@ -1,5 +1,7 @@
 // src/pages/Login.tsx
 import React, { useState } from 'react';
+import { TextField, Button, Container, Typography, Box, Avatar, Link, Grid2 } from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useNavigate } from 'react-router-dom';
 
 interface LoginFormData {
@@ -12,13 +14,13 @@ const Login: React.FC = () => {
   const [error, setError] = useState<string>('');
   const navigate = useNavigate();
 
-  // Mock user credentials
-  const mockUser = {
-    email: 'test@test.com',
-    password: 'password',
-  };
+    // Mock user credentials
+    const mockUser = {
+      email: 'test@test.com',
+      password: 'password',
+    };
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { email, password } = formData;
 
@@ -38,28 +40,71 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="login-form">
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
-      </form>
-    </div>
+    <Container component="main" maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Login
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Login
+          </Button>
+          <Grid2 container spacing={2}>
+            {/* <Grid2 xs={6}> */}
+              {/* Add forgot password link here */}
+              <Link href="/recover-password" variant="body2">
+                Forgot password?
+              </Link>
+            {/* </Grid2> */}
+            {/* <Grid2 xs={6} display="flex" justifyContent="flex-end"> */}
+              {/* Add signup link here */}
+              <Link href="/signup" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            {/* </Grid2> */}
+          </Grid2>
+        </Box>
+      </Box>
+    </Container>
   );
 };
 

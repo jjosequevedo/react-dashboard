@@ -1,9 +1,20 @@
 // src/App.tsx
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DataTable from './components/DataTable';
+
+const RedirectToLogin: React.FC = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Automatically redirect to /login when accessing /
+    navigate('/login');
+  }, [navigate]);
+
+  return null; // No UI, just performing a redirect
+};
 
 // Sample data for DataTable
 const columns = [
@@ -23,6 +34,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
+        <Route path='/' element={<RedirectToLogin />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/datatable"
